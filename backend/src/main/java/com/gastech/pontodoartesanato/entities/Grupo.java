@@ -1,7 +1,6 @@
 package com.gastech.pontodoartesanato.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,34 +14,29 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_pedido")
-public class Pedido implements Serializable{
-
+@Table(name = "tb_grupo")
+public class Grupo implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Double pedido_total;
-	private Instant pedido_momento;
-	private OrderStatus pedido_status;
-
-	@ManyToMany
-	@JoinTable(name = "tb_pedido_produto",
-			joinColumns = @JoinColumn(name = "pedido_id"),
-			inverseJoinColumns = @JoinColumn(name = "produto_id"))
-	private Set<Produto> produtos = new HashSet<>();
+	private String grupo_nome;
 	
-	public Pedido() {
+	@ManyToMany
+	@JoinTable(name = "tb_grupo_produto",
+			joinColumns = @JoinColumn(name = "grupo_id"),
+			inverseJoinColumns = @JoinColumn(name = "produto_id"))
+	private Set<Produto> produtos_1 = new HashSet<>();
+	
+	public Grupo() {		
 	}
 
-	public Pedido(Long id, Double pedido_total, Instant pedido_momento,
-			OrderStatus pedido_status) {
+	public Grupo(Long id, String grupo_nome) {
 		super();
 		this.id = id;
-		this.pedido_total = pedido_total;
-		this.pedido_momento = pedido_momento;
-		this.pedido_status = pedido_status;
+		this.grupo_nome = grupo_nome;
 	}
 
 	public Long getId() {
@@ -53,28 +47,16 @@ public class Pedido implements Serializable{
 		this.id = id;
 	}
 
-	public Double getPedido_total() {
-		return pedido_total;
+	public String getGrupo_Nome() {
+		return grupo_nome;
 	}
 
-	public void setPedido_total(Double pedido_total) {
-		this.pedido_total = pedido_total;
+	public void setGrupo_Nome(String grupo_nome) {
+		this.grupo_nome = grupo_nome;
 	}
 
-	public Instant getPedido_momento() {
-		return pedido_momento;
-	}
-
-	public void setPedido_momento(Instant pedido_momento) {
-		this.pedido_momento = pedido_momento;
-	}
-
-	public OrderStatus getPedido_status() {
-		return pedido_status;
-	}
-
-	public void setPedido_status(OrderStatus pedido_status) {
-		this.pedido_status = pedido_status;
+	public Set<Produto> getProdutos_1() {
+		return produtos_1;
 	}
 
 	@Override
@@ -93,7 +75,7 @@ public class Pedido implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pedido other = (Pedido) obj;
+		Grupo other = (Grupo) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -101,4 +83,5 @@ public class Pedido implements Serializable{
 			return false;
 		return true;
 	}
+
 }

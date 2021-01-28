@@ -1,11 +1,16 @@
 package com.gastech.pontodoartesanato.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +21,7 @@ public class Produto implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long produto_id;
+	private Long id;
 	private String produto_nome;
 	private Double produto_preco;
 	private String produto_descricao;
@@ -26,14 +31,21 @@ public class Produto implements Serializable{
 	private String produto_imagemURI_4;
 	private String produto_imagemURI_5;
 	
+	
+//	@ManyToMany
+//	@JoinTable(name = "tb_produto_grupo",
+//			joinColumns = @JoinColumn(name = "produto_id"),
+//			inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+//	private Set<Grupo> grupos = new HashSet<>();
+	
 	public Produto() {
 	}
 
-	public Produto(Long produto_id, String produto_nome, Double produto_preco, String produto_descricao,
+	public Produto(Long id, String produto_nome, Double produto_preco, String produto_descricao,
 			String produto_imagemURI_1, String produto_imagemURI_2, String produto_imagemURI_3,
 			String produto_imagemURI_4, String produto_imagemURI_5) {
 		super();
-		this.produto_id = produto_id;
+		this.id = id;
 		this.produto_nome = produto_nome;
 		this.produto_preco = produto_preco;
 		this.produto_descricao = produto_descricao;
@@ -44,12 +56,12 @@ public class Produto implements Serializable{
 		this.produto_imagemURI_5 = produto_imagemURI_5;
 	}
 
-	public Long getProduto_id() {
-		return produto_id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setProduto_id(Long produto_id) {
-		this.produto_id = produto_id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getProduto_nome() {
@@ -120,7 +132,7 @@ public class Produto implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((produto_id == null) ? 0 : produto_id.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -133,10 +145,10 @@ public class Produto implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (produto_id == null) {
-			if (other.produto_id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!produto_id.equals(other.produto_id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

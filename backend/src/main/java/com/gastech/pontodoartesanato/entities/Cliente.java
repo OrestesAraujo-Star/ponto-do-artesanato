@@ -21,7 +21,7 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long cliente_id;
+	private Long id;
 	private String nome;
 	private String cliente_cpf;
 	private String cliente_cnpj;
@@ -44,11 +44,11 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(Long cliente_id, String nome, String cliente_cpf, String cliente_cnpj, String cliente_email,
+	public Cliente(Long id, String nome, String cliente_cpf, String cliente_cnpj, String cliente_email,
 			String cliente_endereco, String cliente_municipio, String cliente_estado, String cliente_pais,
 			String cliente_cep, String cliente_fone, String cliente_usuario, String cliente_senha) {
 		super();
-		this.cliente_id = cliente_id;
+		this.id = id;
 		this.nome = nome;
 		this.cliente_cpf = cliente_cpf;
 		this.cliente_cnpj = cliente_cnpj;
@@ -63,12 +63,12 @@ public class Cliente implements Serializable {
 		this.cliente_senha = cliente_senha;
 	}
 
-	public Long getCliente_id() {
-		return cliente_id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCliente_id(Long cliente_id) {
-		this.cliente_id = cliente_id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -171,7 +171,7 @@ public class Cliente implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cliente_id == null) ? 0 : cliente_id.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -184,10 +184,10 @@ public class Cliente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (cliente_id == null) {
-			if (other.cliente_id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!cliente_id.equals(other.cliente_id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
