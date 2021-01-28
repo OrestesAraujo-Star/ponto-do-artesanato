@@ -1,26 +1,13 @@
-package com.gastech.pontodoartesanato.entities;
+package com.gastech.pontodoartesanato.dto;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import com.gastech.pontodoartesanato.entities.Produto;
 
-@Entity
-@Table(name = "tb_produto")
-public class Produto implements Serializable{
+public class ProdutoDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long id;
 	private String produtonome;
 	private Double produto_preco;
@@ -31,20 +18,12 @@ public class Produto implements Serializable{
 	private String produto_imagemURI_4;
 	private String produto_imagemURI_5;
 	
-	
-//	@ManyToMany
-//	@JoinTable(name = "tb_produto_grupo",
-//			joinColumns = @JoinColumn(name = "produto_id"),
-//			inverseJoinColumns = @JoinColumn(name = "grupo_id"))
-//	private Set<Grupo> grupos = new HashSet<>();
-	
-	public Produto() {
+	public ProdutoDTO() {
 	}
 
-	public Produto(Long id, String produtonome, Double produto_preco, String produto_descricao,
+	public ProdutoDTO(Long id, String produtonome, Double produto_preco, String produto_descricao,
 			String produto_imagemURI_1, String produto_imagemURI_2, String produto_imagemURI_3,
 			String produto_imagemURI_4, String produto_imagemURI_5) {
-		super();
 		this.id = id;
 		this.produtonome = produtonome;
 		this.produto_preco = produto_preco;
@@ -54,6 +33,18 @@ public class Produto implements Serializable{
 		this.produto_imagemURI_3 = produto_imagemURI_3;
 		this.produto_imagemURI_4 = produto_imagemURI_4;
 		this.produto_imagemURI_5 = produto_imagemURI_5;
+	}
+	
+	public ProdutoDTO(Produto entity) {
+		id = entity.getId();
+		produtonome = entity.getProdutonome();
+		produto_preco = entity.getProduto_preco();
+		produto_descricao = entity.getProduto_descricao();
+		produto_imagemURI_1 = entity.getProduto_imagemURI_1();
+		produto_imagemURI_2 = entity.getProduto_imagemURI_2();
+		produto_imagemURI_3 = entity.getProduto_imagemURI_3();
+		produto_imagemURI_4 = entity.getProduto_imagemURI_4();
+		produto_imagemURI_5 = entity.getProduto_imagemURI_5();
 	}
 
 	public Long getId() {
@@ -126,32 +117,7 @@ public class Produto implements Serializable{
 
 	public void setProduto_imagemURI_5(String produto_imagemURI_5) {
 		this.produto_imagemURI_5 = produto_imagemURI_5;
-	}
+	}	
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Produto other = (Produto) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
 	
 }
