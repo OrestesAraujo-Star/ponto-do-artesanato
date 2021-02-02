@@ -24,25 +24,27 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Double pedido_total;
-	private Instant pedido_momento;
-	private OrderStatus pedido_status;
+	private Instant pedidomomento;
+	private OrderStatus pedidostatus;
 
 	@ManyToMany
 	@JoinTable(name = "tb_pedido_produto",
 			joinColumns = @JoinColumn(name = "pedido_id"),
-			inverseJoinColumns = @JoinColumn(name = "produto_id"))
+			inverseJoinColumns = @JoinColumn(name = "produto_id")
+			)
+	
 	private Set<Produto> produtos = new HashSet<>();
 	
 	public Pedido() {
 	}
 
-	public Pedido(Long id, Double pedido_total, Instant pedido_momento,
-			OrderStatus pedido_status) {
+	public Pedido(Long id, Double pedido_total, Instant pedidomomento,
+			OrderStatus pedidostatus) {
 		super();
 		this.id = id;
 		this.pedido_total = pedido_total;
-		this.pedido_momento = pedido_momento;
-		this.pedido_status = pedido_status;
+		this.pedidomomento = pedidomomento;
+		this.pedidostatus = pedidostatus;
 	}
 
 	public Long getId() {
@@ -61,20 +63,27 @@ public class Pedido implements Serializable{
 		this.pedido_total = pedido_total;
 	}
 
-	public Instant getPedido_momento() {
-		return pedido_momento;
+	public Instant getPedidomomento() {
+		return pedidomomento;
 	}
 
-	public void setPedido_momento(Instant pedido_momento) {
-		this.pedido_momento = pedido_momento;
+	public void setPedidomomento(Instant pedidomomento) {
+		this.pedidomomento = pedidomomento;
 	}
 
-	public OrderStatus getPedido_status() {
-		return pedido_status;
+	public OrderStatus getPedidostatus() {
+		return pedidostatus;
 	}
 
-	public void setPedido_status(OrderStatus pedido_status) {
-		this.pedido_status = pedido_status;
+	public void setPedidostatus(OrderStatus pedidostatus) {
+		this.pedidostatus = pedidostatus;
+	}
+	
+	
+	
+
+	public Set<Produto> getProdutos() {
+		return produtos;
 	}
 
 	@Override
@@ -101,4 +110,8 @@ public class Pedido implements Serializable{
 			return false;
 		return true;
 	}
+
+
+
+	
 }

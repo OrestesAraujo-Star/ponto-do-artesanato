@@ -1,26 +1,13 @@
-package com.gastech.pontodoartesanato.entities;
+package com.gastech.pontodoartesanato.dto;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import com.gastech.pontodoartesanato.entities.Cliente;
 
-@Entity
-@Table(name = "tb_cliente")
-public class Cliente implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class ClienteDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String cliente_cpf;
@@ -35,19 +22,14 @@ public class Cliente implements Serializable {
 	private String cliente_usuario;
 	private String cliente_senha;
 	
-	@ManyToMany
-	@JoinTable(name = "tb_cliente_pedido",
-			joinColumns = @JoinColumn(name = "cliente_id"),
-			inverseJoinColumns = @JoinColumn(name = "pedido_id"))
-	private Set<Pedido> pedidos = new HashSet<>();
-
-	public Cliente() {
+	private List<PedidoDTO> pedidos = new ArrayList<>();
+	
+	public ClienteDTO() {
 	}
 
-	public Cliente(Long id, String nome, String cliente_cpf, String cliente_cnpj, String cliente_email,
+	public ClienteDTO(Long id, String nome, String cliente_cpf, String cliente_cnpj, String cliente_email,
 			String cliente_endereco, String cliente_municipio, String cliente_estado, String cliente_pais,
 			String cliente_cep, String cliente_fone, String cliente_usuario, String cliente_senha) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.cliente_cpf = cliente_cpf;
@@ -61,6 +43,23 @@ public class Cliente implements Serializable {
 		this.cliente_fone = cliente_fone;
 		this.cliente_usuario = cliente_usuario;
 		this.cliente_senha = cliente_senha;
+	}
+	
+	public ClienteDTO(Cliente entity) {
+		id = entity.getId();
+		nome = entity.getNome();
+		cliente_cpf = entity.getCliente_cpf();
+		cliente_cnpj = entity.getCliente_cnpj();
+		cliente_email = entity.getCliente_email();
+		cliente_endereco = entity.getCliente_endereco();
+		cliente_municipio = entity.getCliente_municipio();
+		cliente_estado = entity.getCliente_estado();
+		cliente_pais = entity.getCliente_pais();
+		cliente_cep = entity.getCliente_cep();
+		cliente_fone = entity.getCliente_fone();
+		cliente_usuario = entity.getCliente_usuario();
+		cliente_senha = entity.getCliente_senha();
+		pedidos = entity.getPedidos().stream().map(x -> new PedidoDTO(x)).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -166,8 +165,8 @@ public class Cliente implements Serializable {
 	public void setCliente_senha(String cliente_senha) {
 		this.cliente_senha = cliente_senha;
 	}
-	
-	public Set<Pedido> getPedidos() {
+
+	public List<PedidoDTO> getPedidos() {
 		return pedidos;
 	}
 
@@ -177,23 +176,6 @@ public class Cliente implements Serializable {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 
 

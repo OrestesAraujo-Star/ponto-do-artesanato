@@ -1,11 +1,14 @@
 INSERT INTO TB_CLIENTE (cliente_cep, cliente_cnpj, cliente_cpf, cliente_email, cliente_endereco, cliente_estado, cliente_fone, cliente_municipio, cliente_pais, cliente_senha, cliente_usuario, nome)
  VALUES ('88.130-390', '34.536.759/0001-05', '400.297.439-15', 'orestesaraujo@gmail.com',
  'Rua Valentim Camilo Garcia,137', 'SC', '(48)991780033', 'Palhoça', 'Brasil', '123456', 'orestesaraujo', 'Orestes Gastão Santos Araujo');
+INSERT INTO TB_CLIENTE (cliente_cep, cliente_cnpj, cliente_cpf, cliente_email, cliente_endereco, cliente_estado, cliente_fone, cliente_municipio, cliente_pais, cliente_senha, cliente_usuario, nome)
+ VALUES ('88.130-390', '34.536.759/0001-05', '459.621.389-53', 'marilene_83@hotmail.com',
+ 'Rua Valentim Camilo Garcia,137', 'SC', '(48)998000011', 'Palhoça', 'Brasil', 'abcdef', 'marilenearaujo', 'Marilene Cechetto Araujo');
  
 
-INSERT INTO tb_grupo (grupo_nome) VALUES ('BEBÊ');
-INSERT INTO tb_grupo (grupo_nome) VALUES ('DIVERSOS');
-INSERT INTO tb_grupo (grupo_nome) VALUES ('PÁSCOA');
+INSERT INTO tb_grupo (gruponome) VALUES ('BEBÊ');
+INSERT INTO tb_grupo (gruponome) VALUES ('DIVERSOS');
+INSERT INTO tb_grupo (gruponome) VALUES ('PÁSCOA');
 
 INSERT INTO tb_produto (produto_descricao, produto_imagemuri_1, produto_imagemuri_2, produto_imagemuri_3, produto_imagemuri_4, produto_imagemuri_5, produtonome, produto_preco)
  VALUES ('CONJUNTO DE 4 ALMOFADAS
@@ -96,14 +99,22 @@ Feito sob encomenda
 
 
 
-INSERT INTO TB_PEDIDO (pedido_momento, pedido_status, pedido_total)
- VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 0, 204.19);
+INSERT INTO TB_PEDIDO (pedidomomento, pedidostatus, pedido_total)
+ VALUES (TIMESTAMP WITH TIME ZONE '2021-01-01T10:00:00Z', 0, 204.19); 
+INSERT INTO TB_PEDIDO (pedidomomento, pedidostatus, pedido_total)
+ VALUES (TIMESTAMP WITH TIME ZONE '2021-01-31T10:00:00Z', 0, 300.99);
+INSERT INTO TB_PEDIDO (pedidomomento, pedidostatus, pedido_total)
+ VALUES (TIMESTAMP WITH TIME ZONE '2020-12-31T22:00:00Z', 0, 1900.00);
  
- 
+  
+  
+  
 INSERT INTO TB_CLIENTE_PEDIDO (cliente_id, pedido_id)
  VALUES ( 1, 1);
- 
-
+INSERT INTO TB_CLIENTE_PEDIDO (cliente_id, pedido_id)
+ VALUES ( 1, 2);
+INSERT INTO TB_CLIENTE_PEDIDO (cliente_id, pedido_id)
+ VALUES ( 2, 3);
  
 INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
  VALUES ( 1, 1);
@@ -111,7 +122,14 @@ INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
  VALUES ( 1, 3);
 INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
  VALUES ( 1, 4);
- 
+ INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
+ VALUES ( 2, 2);
+ INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
+ VALUES ( 3, 1);
+INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
+ VALUES ( 3, 5);
+ INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
+ VALUES ( 3, 3);
  
 INSERT INTO TB_GRUPO_PRODUTO (grupo_id, produto_id)
  VALUES ( 2, 1);

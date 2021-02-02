@@ -22,7 +22,7 @@ public class Grupo implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String grupo_nome;
+	private String gruponome;
 	
 	@ManyToMany
 	@JoinTable(name = "tb_grupo_produto",
@@ -33,10 +33,10 @@ public class Grupo implements Serializable{
 	public Grupo() {		
 	}
 
-	public Grupo(Long id, String grupo_nome) {
+	public Grupo(Long id, String gruponome) {
 		super();
 		this.id = id;
-		this.grupo_nome = grupo_nome;
+		this.gruponome = gruponome;
 	}
 
 	public Long getId() {
@@ -47,12 +47,12 @@ public class Grupo implements Serializable{
 		this.id = id;
 	}
 
-	public String getGrupo_Nome() {
-		return grupo_nome;
+	public String getGruponome() {
+		return gruponome;
 	}
 
-	public void setGrupo_Nome(String grupo_nome) {
-		this.grupo_nome = grupo_nome;
+	public void setGruponome(String gruponome) {
+		this.gruponome = gruponome;
 	}
 
 	public Set<Produto> getProdutos_1() {
