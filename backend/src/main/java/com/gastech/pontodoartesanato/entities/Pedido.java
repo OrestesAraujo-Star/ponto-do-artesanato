@@ -23,7 +23,7 @@ public class Pedido implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Double pedido_total;
+	private Double pedidototal;
 	private Instant pedidomomento;
 	private OrderStatus pedidostatus;
 
@@ -32,17 +32,24 @@ public class Pedido implements Serializable{
 			joinColumns = @JoinColumn(name = "pedido_id"),
 			inverseJoinColumns = @JoinColumn(name = "produto_id")
 			)
-	
 	private Set<Produto> produtos = new HashSet<>();
+
+	@ManyToMany
+	@JoinTable(name = "tb_pedido_cliente",
+			joinColumns = @JoinColumn(name = "pedido_id"),
+			inverseJoinColumns = @JoinColumn(name = "cliente_id"))
+	private Set<Cliente> clientes = new HashSet<>();
+
 	
+			
 	public Pedido() {
 	}
 
-	public Pedido(Long id, Double pedido_total, Instant pedidomomento,
+	public Pedido(Long id, Double pedidototal, Instant pedidomomento,
 			OrderStatus pedidostatus) {
 		super();
 		this.id = id;
-		this.pedido_total = pedido_total;
+		this.pedidototal = pedidototal;
 		this.pedidomomento = pedidomomento;
 		this.pedidostatus = pedidostatus;
 	}
@@ -55,12 +62,12 @@ public class Pedido implements Serializable{
 		this.id = id;
 	}
 
-	public Double getPedido_total() {
-		return pedido_total;
+	public Double getPedidototal() {
+		return pedidototal;
 	}
 
-	public void setPedido_total(Double pedido_total) {
-		this.pedido_total = pedido_total;
+	public void setPedidototal(Double pedidototal) {
+		this.pedidototal = pedidototal;
 	}
 
 	public Instant getPedidomomento() {
@@ -84,6 +91,10 @@ public class Pedido implements Serializable{
 
 	public Set<Produto> getProdutos() {
 		return produtos;
+	}
+	
+	public Set<Cliente> getClientes() {
+		return clientes;
 	}
 
 	@Override

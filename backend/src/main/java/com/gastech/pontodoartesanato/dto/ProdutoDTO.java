@@ -1,6 +1,8 @@
 package com.gastech.pontodoartesanato.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.gastech.pontodoartesanato.entities.Produto;
 
@@ -17,6 +19,8 @@ public class ProdutoDTO implements Serializable{
 	private String produto_imagemURI_3;
 	private String produto_imagemURI_4;
 	private String produto_imagemURI_5;
+	
+	private List<GrupoDTO> grupos = new ArrayList<>();
 	
 	public ProdutoDTO() {
 	}
@@ -117,7 +121,14 @@ public class ProdutoDTO implements Serializable{
 
 	public void setProduto_imagemURI_5(String produto_imagemURI_5) {
 		this.produto_imagemURI_5 = produto_imagemURI_5;
-	}	
+	}
 
-	
+	public List<GrupoDTO> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<GrupoDTO> grupos) {
+		this.grupos = grupos;
+	}
+
 }

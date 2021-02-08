@@ -28,7 +28,7 @@ public class Grupo implements Serializable{
 	@JoinTable(name = "tb_grupo_produto",
 			joinColumns = @JoinColumn(name = "grupo_id"),
 			inverseJoinColumns = @JoinColumn(name = "produto_id"))
-	private Set<Produto> produtos_1 = new HashSet<>();
+	private Set<Produto> produtos = new HashSet<>();
 	
 	public Grupo() {		
 	}
@@ -55,8 +55,8 @@ public class Grupo implements Serializable{
 		this.gruponome = gruponome;
 	}
 
-	public Set<Produto> getProdutos_1() {
-		return produtos_1;
+	public Set<Produto> getProdutos() {
+		return produtos;
 	}
 
 	@Override

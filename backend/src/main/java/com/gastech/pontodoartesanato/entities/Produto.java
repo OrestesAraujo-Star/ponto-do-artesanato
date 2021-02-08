@@ -1,11 +1,16 @@
 package com.gastech.pontodoartesanato.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +30,12 @@ public class Produto implements Serializable{
 	private String produto_imagemURI_3;
 	private String produto_imagemURI_4;
 	private String produto_imagemURI_5;
+	
+	@OneToMany
+	@JoinTable(name = "tb_produto_grupo",
+			joinColumns = @JoinColumn(name = "produto_id"),
+			inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	private Set<Grupo> grupos = new HashSet<>();
 	
 	public Produto() {
 	}
@@ -115,6 +126,12 @@ public class Produto implements Serializable{
 	public void setProduto_imagemURI_5(String produto_imagemURI_5) {
 		this.produto_imagemURI_5 = produto_imagemURI_5;
 	}
+	
+	public Set<Grupo> getGrupos() {
+		return grupos;
+	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -140,6 +157,5 @@ public class Produto implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
 }

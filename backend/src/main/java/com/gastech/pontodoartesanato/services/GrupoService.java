@@ -4,13 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gastech.pontodoartesanato.dto.GrupoDTO;
 import com.gastech.pontodoartesanato.entities.Grupo;
 import com.gastech.pontodoartesanato.repositories.GrupoRepository;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class GrupoService {
@@ -25,4 +24,11 @@ public class GrupoService {
 		
 	}
 
+	@Transactional
+	public GrupoDTO insert(GrupoDTO dto) {
+		Grupo grupo = new Grupo(null, dto.getGruponome());
+		grupo = repository.save(grupo);
+		
+		return new GrupoDTO(grupo);
+	}	
 }

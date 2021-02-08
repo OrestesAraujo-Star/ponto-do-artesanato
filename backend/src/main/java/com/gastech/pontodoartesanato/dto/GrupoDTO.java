@@ -27,7 +27,7 @@ public class GrupoDTO implements Serializable{
 	public GrupoDTO(Grupo entity) {
 		id = entity.getId();
 		gruponome = entity.getGruponome();
-		produtos = entity.getProdutos_1().stream().map(x -> new ProdutoDTO(x)).collect(Collectors.toList());
+		produtos = entity.getProdutos().stream().map(x -> new ProdutoDTO(x)).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -53,6 +53,8 @@ public class GrupoDTO implements Serializable{
 	public void setProdutos(List<ProdutoDTO> produtos) {
 		this.produtos = produtos;
 	}
+	
+	
 	
 	
 }

@@ -14,7 +14,7 @@ public class PedidoDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private Double pedido_total;
+	private Double pedidototal;
 	private Instant pedidomomento;
 	private OrderStatus pedidostatus;
 	
@@ -23,16 +23,16 @@ public class PedidoDTO implements Serializable{
 	public PedidoDTO() {		
 	}
 
-	public PedidoDTO(Long id, Double pedido_total, Instant pedidomomento, OrderStatus pedidostatus) {
+	public PedidoDTO(Long id, Double pedidototal, Instant pedidomomento, OrderStatus pedidostatus) {
 		this.id = id;
-		this.pedido_total = pedido_total;
+		this.pedidototal = pedidototal;
 		this.pedidomomento = pedidomomento;
 		this.pedidostatus = pedidostatus;
 	}
 	
 	public PedidoDTO(Pedido entity) {
 		id = entity.getId();
-		pedido_total = entity.getPedido_total();
+		pedidototal = entity.getPedidototal();
 		pedidomomento = entity.getPedidomomento();
 		pedidostatus = entity.getPedidostatus();
 		produtos = entity.getProdutos().stream().map(x -> new ProdutoDTO(x)).collect(Collectors.toList());
@@ -46,12 +46,12 @@ public class PedidoDTO implements Serializable{
 		this.id = id;
 	}
 
-	public Double getPedido_total() {
-		return pedido_total;
+	public Double getPedidototal() {
+		return pedidototal;
 	}
 
-	public void setPedido_total(Double pedido_total) {
-		this.pedido_total = pedido_total;
+	public void setPedidototal(Double pedidototal) {
+		this.pedidototal = pedidototal;
 	}
 
 	public Instant getPedidomomento() {
@@ -73,6 +73,12 @@ public class PedidoDTO implements Serializable{
 	public List<ProdutoDTO> getProdutos() {
 		return produtos;
 	}
+
+//	public List<ClienteDTO> getClientes() {
+//		return getClientes();
+//	}
+	
+
 
 
 
