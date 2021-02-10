@@ -1,8 +1,0 @@
-INSERT INTO tb_produto (produto_id, produto_descricao, produto_imageuri_1, produto_imageuri_2, produto_imageuri_3, produto_imageuri_4, produto_imageuri_5, produto_nome, pproduto_preco) VALUES ( ,
-'CONJUNTO DE 4 ALMOFADAS, 1 GRANDE E 3 PEQUENAS
-1 almofada 45 x 45
-3 almofadas 35 x 35
-Na falta das estampas deste produto, enviaremos ao cliente o produto com as estampas e cores mais próximas possíveis',
-'https://github.com/OrestesAraujo-Star/ponto-do-artesanato/blob/main/Produtos/conjunto-de-almofadas.jpg', , , , , 'Conjunto de Almofadas', 204.19);
-
-

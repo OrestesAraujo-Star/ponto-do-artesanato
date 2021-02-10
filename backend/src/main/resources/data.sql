@@ -114,12 +114,6 @@ INSERT INTO TB_PEDIDO_CLIENTE (pedido_id , cliente_id)
 INSERT INTO TB_PEDIDO_CLIENTE (pedido_id , cliente_id)
  VALUES ( 3, 2);
   
-
- 
-
- 
- 
- 
  
 INSERT INTO TB_PEDIDO_PRODUTO (pedido_id, produto_id)
  VALUES ( 1, 1);
