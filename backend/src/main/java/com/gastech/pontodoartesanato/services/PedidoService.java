@@ -55,5 +55,14 @@ public class PedidoService {
 		
 		return new PedidoDTO(pedido);
 	}
+	
+	@Transactional
+	public PedidoDTO setDelivered(Long id) {
+		Pedido pedido = repository.getOne(id);
+		pedido.setPedidostatus(OrderStatus.DELIVERED);
+		pedido = repository.save(pedido);
+		return new PedidoDTO(pedido);
+		
+	}
 		
 }
