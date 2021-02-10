@@ -1,16 +1,11 @@
 package com.gastech.pontodoartesanato.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,11 +30,13 @@ public class Cliente implements Serializable {
 	private String cliente_usuario;
 	private String cliente_senha;
 	
-	@ManyToMany
-	@JoinTable(name = "tb_cliente_pedido",
-			joinColumns = @JoinColumn(name = "cliente_id"),
-			inverseJoinColumns = @JoinColumn(name = "pedido_id"))
-	private Set<Pedido> pedidos = new HashSet<>();
+//	@OneToMany
+//	@JoinTable(name = "tb_cliente_pedido",
+//			joinColumns = @JoinColumn(name = "cliente_id"),
+//			inverseJoinColumns = @JoinColumn(name = "pedido_id"))
+//	private Set<Pedido> pedidos = new HashSet<>();
+	
+	
 
 	public Cliente() {
 	}
@@ -167,9 +164,10 @@ public class Cliente implements Serializable {
 		this.cliente_senha = cliente_senha;
 	}
 	
-	public Set<Pedido> getPedidos() {
-		return pedidos;
-	}
+//	public Set<Pedido> getPedidos() {
+//		return pedidos;
+//	}
+	
 
 	@Override
 	public int hashCode() {

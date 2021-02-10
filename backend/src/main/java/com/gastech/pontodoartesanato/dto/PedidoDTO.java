@@ -20,6 +20,8 @@ public class PedidoDTO implements Serializable{
 	
 	private List<ProdutoDTO> produtos = new ArrayList<>();
 	
+	private List<ClienteDTO> clientes = new ArrayList<>();
+	
 	public PedidoDTO() {		
 	}
 
@@ -36,6 +38,7 @@ public class PedidoDTO implements Serializable{
 		pedidomomento = entity.getPedidomomento();
 		pedidostatus = entity.getPedidostatus();
 		produtos = entity.getProdutos().stream().map(x -> new ProdutoDTO(x)).collect(Collectors.toList());
+		clientes = entity.getClientes().stream().map(x -> new ClienteDTO(x)).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -74,13 +77,8 @@ public class PedidoDTO implements Serializable{
 		return produtos;
 	}
 
-//	public List<ClienteDTO> getClientes() {
-//		return getClientes();
-//	}
-	
-
-
-
-
+	public List<ClienteDTO> getClientes() {
+		return clientes;
+	}
 	
 }

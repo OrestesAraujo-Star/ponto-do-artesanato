@@ -107,21 +107,16 @@ INSERT INTO TB_PEDIDO (pedidomomento, pedidostatus, pedidototal)
  VALUES (TIMESTAMP WITH TIME ZONE '2020-12-31T22:00:00Z', 0, 1900.00);
  
   
-  
-  
-INSERT INTO TB_CLIENTE_PEDIDO (cliente_id, pedido_id)
- VALUES ( 1, 1);
-INSERT INTO TB_CLIENTE_PEDIDO (cliente_id, pedido_id)
- VALUES ( 1, 2);
-INSERT INTO TB_CLIENTE_PEDIDO (cliente_id, pedido_id)
- VALUES ( 2, 3);
- 
 INSERT INTO TB_PEDIDO_CLIENTE (pedido_id , cliente_id)
  VALUES ( 1, 1);
 INSERT INTO TB_PEDIDO_CLIENTE (pedido_id , cliente_id)
  VALUES ( 2, 1);
 INSERT INTO TB_PEDIDO_CLIENTE (pedido_id , cliente_id)
- VALUES ( 3, 2); 
+ VALUES ( 3, 2);
+  
+
+ 
+
  
  
  

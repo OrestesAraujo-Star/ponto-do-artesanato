@@ -52,12 +52,12 @@ public class ClienteService {
 	
 	
 
-	public PedidoRepository getPedidoRepository() {
-		return pedidoRepository;
-	}
+//	public PedidoRepository getPedidoRepository() {
+//		return pedidoRepository;
+//	}
 
-	public void setPedidoRepository(PedidoRepository pedidoRepository) {
-		this.pedidoRepository = pedidoRepository;
-	}
+//	public void setPedidoRepository(PedidoRepository pedidoRepository) {
+//		this.pedidoRepository = pedidoRepository;
+//	}
 
 }

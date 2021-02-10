@@ -22,7 +22,7 @@ public class ClienteDTO {
 	private String cliente_usuario;
 	private String cliente_senha;
 	
-	private List<PedidoDTO> pedidos = new ArrayList<>();
+//	private List<PedidoDTO> pedidos = new ArrayList<>();
 	
 	public ClienteDTO() {
 	}
@@ -59,7 +59,7 @@ public class ClienteDTO {
 		cliente_fone = entity.getCliente_fone();
 		cliente_usuario = entity.getCliente_usuario();
 		cliente_senha = entity.getCliente_senha();
-		pedidos = entity.getPedidos().stream().map(x -> new PedidoDTO(x)).collect(Collectors.toList());
+//		pedidos = entity.getPedidos().stream().map(x -> new PedidoDTO(x)).collect(Collectors.toList());
 	}
 
 	public Long getId() {
@@ -166,9 +166,9 @@ public class ClienteDTO {
 		this.cliente_senha = cliente_senha;
 	}
 
-	public List<PedidoDTO> getPedidos() {
-		return pedidos;
-	}
+//	public List<PedidoDTO> getPedidos() {
+//		return pedidos;
+//	}
 
 	@Override
 	public int hashCode() {

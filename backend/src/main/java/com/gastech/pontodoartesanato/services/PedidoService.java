@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gastech.pontodoartesanato.dto.ClienteDTO;
 import com.gastech.pontodoartesanato.dto.PedidoDTO;
 import com.gastech.pontodoartesanato.dto.ProdutoDTO;
+import com.gastech.pontodoartesanato.entities.Cliente;
 import com.gastech.pontodoartesanato.entities.OrderStatus;
 import com.gastech.pontodoartesanato.entities.Pedido;
 import com.gastech.pontodoartesanato.entities.Produto;
+import com.gastech.pontodoartesanato.repositories.ClienteRepository;
 import com.gastech.pontodoartesanato.repositories.PedidoRepository;
 import com.gastech.pontodoartesanato.repositories.ProdutoRepository;
 
@@ -24,6 +27,9 @@ public class PedidoService {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
 	
 	@Transactional(readOnly = true)
 	public List<PedidoDTO> findAll() {
@@ -38,14 +44,13 @@ public class PedidoService {
 			Produto produto = produtoRepository.getOne(p.getId());
 			pedido.getProdutos().add(produto);
 		}
+
+		for (ClienteDTO p : dto.getClientes()) {
+			Cliente cliente = clienteRepository.getOne(p.getId());
+			pedido.getClientes().add(cliente);
+		}
 		
 		
-//		pedido = repository.save(pedido);
-		
-//		for (ClienteDTO c : dto.getClientes()) {
-//			Cliente cliente = clienteRepository.getOne(c.getId());
-//			pedido.getClientes().add(cliente);
-//		}
 		pedido = repository.save(pedido);
 		
 		return new PedidoDTO(pedido);
